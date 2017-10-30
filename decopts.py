@@ -45,7 +45,7 @@ def entrypoint(*args, **kwds):
                 func.actions[action].args = func.args
 
             func(*args, **kwds)
-            if func.args.action in func.actions:
+            if hasattr(func.args, 'action') and func.args.action in func.actions:
                 func.actions[func.args.action]()
 
         func = get_func(func)
@@ -87,7 +87,7 @@ def action(parent, name, *args, **kwds):
             if not hasattr(func, 'actions'):
                 func.actions = {}
 
-            defaults(func, action=name)
+            func.parser.set_defaults(action=name)
 
         func = get_func(func)
         func.parent = parent
