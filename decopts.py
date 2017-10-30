@@ -41,6 +41,7 @@ def entrypoint(*args, **kwds):
                 do_run(func.actions[action])
 
             func.args = func.parser.parse_args()
+            run.args = func.args
             for action in func.actions.keys():
                 func.actions[action].args = func.args
 
@@ -50,6 +51,7 @@ def entrypoint(*args, **kwds):
 
         func = get_func(func)
         func.parser = ArgumentParser(*args, **kwds)
+        func.wrapper = run
         if not hasattr(func, 'actions'):
             func.actions = {}
 
@@ -90,6 +92,7 @@ def action(parent, name, *args, **kwds):
             func.parser.set_defaults(action=name)
 
         func = get_func(func)
+        func.wrapper = action_wrapper
         func.parent = parent
         if not hasattr(parent, 'actions'):
             parent.actions = {}
