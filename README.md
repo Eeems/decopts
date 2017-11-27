@@ -1,3 +1,4 @@
+[![Known Vulnerabilities](https://snyk.io/test/github/eeems/decopts/badge.svg)](https://snyk.io/test/github/eeems/decopts)
 # Installation
 ```
 pip install decparse
