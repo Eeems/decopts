@@ -1,2 +1,2 @@
 pypandoc==1.4
-setuptools==40.2.0
+setuptools==40.3.0
