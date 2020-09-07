@@ -1,2 +1,4 @@
 pypandoc==1.5
 setuptools==49.5.0
+
+pip>=19.2 # not directly required, pinned by Snyk to avoid a vulnerability
